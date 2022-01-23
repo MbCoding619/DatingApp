@@ -3,3 +3,33 @@
 <ul>
   <li *ngFor="let user of users">{{user.id}} - {{user.userName}}</li>
 </ul>
+
+
+
+<style>
+  body {
+  direction: rtl;
+  color: #555;
+  font: .9em tahoma;
+}
+
+.container {
+  margin: 40px auto;
+  max-width: 700px;
+}
+
+.first-list {
+  list-style: square url(http://assets.css-tricks.ir/images/blue-heart.png) inside;
+}
+
+li {
+  margin-bottom: .5em;
+}
+</style>
+
+
+<div class="container"> 
+  <ul class="first-list">
+    <li *ngFor="let user of users">{{user.id}} - {{user.userName}}</li>
+  </ul>
+</div>

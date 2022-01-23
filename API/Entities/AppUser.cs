@@ -11,6 +11,11 @@ namespace API.Entities
 
         public string UserName { get; set; }
 
+        //Creating Attributes PasswordHash & PasswordSalt of Byte Array
+        public byte[] PasswordHash { get; set; }
+
+        public byte[] PasswordSalt { get; set; }
+
        
     }
     

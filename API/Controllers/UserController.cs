@@ -4,14 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using API.Data;
 using API.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class UserController : ControllerBase
+   
+    public class UserController : BaseApiController
     {
         private readonly DataContext _context;
         public UserController(DataContext context)
@@ -20,6 +20,7 @@ namespace API.Controllers
         }
 
      [HttpGet]
+     [AllowAnonymous]
      //making code async to enable Scalability 
      // This will API to serve any HIT while quering database for a previous hit.
      //this is achieved by putting async in the method and Encapsulating the ActionResult in Task container
@@ -31,7 +32,7 @@ namespace API.Controllers
          return await _context.Users.ToListAsync();
         
    }
-
+    [Authorize]
     [HttpGet("{id}")]
         public async Task<ActionResult<AppUser>> GetUser( int id)
         {
